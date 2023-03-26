@@ -92,14 +92,76 @@
   position: relative;
 }
 
-/* .rl_logo { */
-  /* background-image: url("../public/RL_Logotype.png"); */
-  /* background-image: url("../public/RL_Logotype_w.png");
-  height: 40px;
-  width: 40px;
-  display: block;
-  background-repeat: no-repeat;
-} */
+.worksMainDiv {
+  padding-top: 53.5px;
+}
+
+.worksGrid {
+  display: grid;
+  grid-template-rows: 810px 500px 766px;
+  /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
+  grid-row-gap: 100px;
+  padding-bottom: 100px;
+}
+
+.worksRowBlock1{
+  background-color: aqua;
+  display: flex;
+  column-gap: 79px;
+}
+
+.worksRowBlock2{
+  background-color: aquamarine;
+  display: flex;
+    column-gap: 80px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  
+}
+
+.worksRowBlock3{
+  background-color: chocolate;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.worksBlock1{
+  
+}
+
+.worksBlock2{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
+}
+
+.worksBlock2 .figure:first-child{
+  grid-area: 1;
+}
+
+.worksBlock2 .figure:nth-child(2){
+  grid-area: 2 / 3;
+  align-self: flex-end;
+}
+
+.worksBlock4, .worksBlock5, .worksBlock6 {
+  grid-area: 2;
+}
+
+.figure {
+  text-align: left;
+  font-size: smaller;
+  text-indent: 0;
+  color: black;
+}
+
+.figure p span:nth-child(2){
+padding-left: 50px;
+}
+
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
