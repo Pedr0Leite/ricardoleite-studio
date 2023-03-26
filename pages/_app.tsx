@@ -4,6 +4,15 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+@font-face {
+  font-family: "SuisseIntl-Regular";
+  src: url("../public/fonts/SuisseIntl-Regular/SuisseIntl-Regular.woff") format('woff'),
+  src: url(../public/fonts/SuisseIntl-Regular/SuisseIntl-Regular.woff2") format('woff');
+}
+`;
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -23,6 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <GlobalStyle/>
       <AnimatePresence>
         <motion.div
         key={router.route}
