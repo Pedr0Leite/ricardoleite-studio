@@ -13,14 +13,12 @@ export default function Clock() {
     .split(",")[1]);
   }
 
-
-
   useEffect(() => {
     const timerId = setInterval(refreshClock, 999);
     return function cleanup() {
         clearInterval(timerId);
       };
-  }, []);
+  }, [dateTime]);
 
   return (
     <>
