@@ -4,7 +4,8 @@
 
 .projectIndexBlock {
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
+  /* grid-template-columns: 1.7fr 1fr; */
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 79px;
   margin: 0 15px 0 15px;
   border-top: 1px solid black;

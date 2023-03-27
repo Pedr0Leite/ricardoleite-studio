@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "SuisseIntl-Regular";
+  src: url("../public/fonts/SuisseIntl-Regular.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -104,49 +109,48 @@
   padding-bottom: 100px;
 }
 
-.worksRowBlock1{
-  background-color: aqua;
+.worksRowBlock1 {
+  /* background-color: aqua; */
   display: flex;
   column-gap: 79px;
 }
 
-.worksRowBlock2{
-  background-color: aquamarine;
+.worksRowBlock2 {
+  /* background-color: aquamarine; */
   display: flex;
-    column-gap: 80px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-  
+  column-gap: 80px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
-.worksRowBlock3{
-  background-color: chocolate;
+.worksRowBlock3 {
+  /* background-color: chocolate; */
   display: flex;
   justify-content: flex-end;
-
 }
 
-.worksBlock1{
-  
+.worksBlock1 {
 }
 
-.worksBlock2{
+.worksBlock2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
 }
 
-.worksBlock2 .figure:first-child{
+.worksBlock2 .figure:first-child {
   grid-area: 1;
 }
 
-.worksBlock2 .figure:nth-child(2){
+.worksBlock2 .figure:nth-child(2) {
   grid-area: 2 / 3;
   align-self: flex-end;
 }
 
-.worksBlock4, .worksBlock5, .worksBlock6 {
+.worksBlock4,
+.worksBlock5,
+.worksBlock6 {
   grid-area: 2;
 }
 
@@ -155,11 +159,120 @@
   font-size: smaller;
   text-indent: 0;
   color: black;
+  cursor: pointer;
 }
 
-.figure p span:nth-child(2){
-padding-left: 50px;
+.figure p span:first-child {
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #000000;
 }
+
+.figure p span:nth-child(2) {
+  padding-left: 50px;
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #000000;
+}
+
+/* Specific works */
+
+.worksDetailsMainDiv {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-column-gap: 20px; */
+  column-gap: 79px;
+  margin: 0 15px 0 15px;
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+.worksDetailsLeft {
+  display: grid;
+  grid-template-rows: 182px repeat(4, 45px) auto;
+  /* grid-template-rows: repeat( auto-fill, minmax(45px, 1fr)); */
+  padding-right: 20px;
+  position: fixed;
+  width: 50%;
+}
+
+.worksDetailsTitle {
+  /* height: 182px; */
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 100%;
+  color: #000000;
+  padding-bottom: 74px;
+}
+
+.worksDetailsInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 45px;
+  border-top: 1px solid black;
+  padding-top: 10px;
+}
+
+.worksDetailsInfo span:first-child {
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 100%;
+  color: #000000;
+}
+
+.worksDetailsInfo span:nth-child(2) {
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 100%;
+  color: #000000;
+}
+
+.worksDetailsText {
+  height: 425px;
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 100%;
+  color: #000000;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: 32.5px;
+}
+
+.worksDetailsRight {
+  background-color: rosybrown;
+  grid-area: 1 / 2;
+}
+
+
+/* clock */
+
+.clock {
+  font-family: "ABC Walter Alte";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  text-decoration-line: underline;
+  color: #000000;
+  position: relative;
+  left: 120px;
+}
+
+
 
 
 /* :root {
