@@ -3,13 +3,10 @@ import styles from "@/styles/Navbar.module.css";
 import useScrollDirection from "@/hooks/useScrollDirection";
 import Link from "next/link";
 import rlLogo from "../public/RL_Logotype.png";
+import Clock from "./Clock";
 
 export default function Navbar() {
   const scrollDirection = useScrollDirection();
-
-  // For the date
-  // let chicago_datetime_str = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
-
 
   return (
     <nav
@@ -29,6 +26,7 @@ export default function Navbar() {
         <Link href="/works">
           <span>Works</span>
         </Link>
+        <Clock/>
         <Link href="/about">
           <span>About</span>
         </Link>
