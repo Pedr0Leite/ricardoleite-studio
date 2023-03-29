@@ -103,7 +103,8 @@
 
 .worksGrid {
   display: grid;
-  grid-template-rows: 810px 500px 766px;
+  /* grid-template-rows: 810px 500px 766px; */
+  grid-template-rows: repeat(3, auto);
   /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
   grid-row-gap: 100px;
   padding-bottom: 100px;
@@ -160,6 +161,7 @@
   text-indent: 0;
   color: black;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .figure p span:first-child {
@@ -179,6 +181,7 @@
   font-size: 12px;
   line-height: 100%;
   color: #000000;
+  text-transform: uppercase;
 }
 
 /* Specific works */

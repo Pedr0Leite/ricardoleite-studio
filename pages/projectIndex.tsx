@@ -2,32 +2,46 @@ import React from "react";
 import indexProjectData from "../indexProjectData.json";
 import styles from "@/styles/ProjectIndex.module.css";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ProjectIndex() {
-//   const cardImgVariants = {
-//     hidden: {
-//       opacity: 0,
-//     },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         type: "spring",
-//         delay: 0.5,
-//       },
-//     },
-//   };
+  //   const cardImgVariants = {
+  //     hidden: {
+  //       opacity: 0,
+  //     },
+  //     visible: {
+  //       opacity: 1,
+  //       transition: {
+  //         type: "spring",
+  //         delay: 0.5,
+  //       },
+  //     },
+  //   };
   const cardImgVariants = {
     hidden: {
       opacity: 0,
-      height: ["0px"]
+      height: ["0px"],
     },
     visible: {
       opacity: 1,
-      height: ["0px", "50px", "100px", "150px", "200px", "250px", "300px", "350px", "400px", "450px", "500px", "517px"],
-    //   transition: {
-    //     type: "spring",
-    //     delay: 0.5,
-    //   },
+      height: [
+        "0px",
+        "50px",
+        "100px",
+        "150px",
+        "200px",
+        "250px",
+        "300px",
+        "350px",
+        "400px",
+        "450px",
+        "500px",
+        "517px",
+      ],
+      //   transition: {
+      //     type: "spring",
+      //     delay: 0.5,
+      //   },
       transition: {
         type: "linear",
         delay: 0.5,
@@ -35,36 +49,36 @@ export default function ProjectIndex() {
     },
   };
 
-
-
   return (
     <div className={styles.projectIndexMain}>
-       {indexProjectData !== undefined &&
-         indexProjectData.map((_value: any, index: number) => {
-           return (
-             <motion.div
-               initial="hidden"
-               whileHover="visible"
-               animate="hidden"
-               key={index}
-             >
-               <div className={styles.projectIndexBlock}>
-                 <div className={styles.projectIndexBlockOne}>
-                   <div>{_value.title}</div>
-                   <div>{_value.img} img</div>
-                 </div>
-                 <div className={styles.projectIndexBlockTwo}>
-                   <div>{_value.tags.join(", ")}</div>
-                   <div>{_value.year}</div>
-                 </div>
-               </div>
-               <motion.div
-                 variants={cardImgVariants}
-                 className={styles.cardImg}
-               ></motion.div>
-             </motion.div>
-           );
-         })}
+      {indexProjectData !== undefined &&
+        indexProjectData.map((_value: any) => {
+          return (
+            <motion.div
+              initial="hidden"
+              whileHover="visible"
+              animate="hidden"
+              key={_value.id}
+            >
+              <Link href={`/works/${_value.id}`}>
+                <div className={styles.projectIndexBlock}>
+                  <div className={styles.projectIndexBlockOne}>
+                    <div>{_value.title}</div>
+                    <div>{_value.img} img</div>
+                  </div>
+                  <div className={styles.projectIndexBlockTwo}>
+                    <div>{_value.tags.join(", ")}</div>
+                    <div>{_value.year}</div>
+                  </div>
+                </div>
+              </Link>
+              <motion.div
+                variants={cardImgVariants}
+                className={styles.cardImg}
+              ></motion.div>
+            </motion.div>
+          );
+        })}
       {/* <motion.div
         initial="hidden"
         whileHover="visible"
