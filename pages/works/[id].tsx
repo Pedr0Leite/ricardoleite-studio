@@ -1,32 +1,68 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import indexProjectData from "../../indexProjectData.json";
 
+interface WorksDetailsInterface {
+  clientName?: string;
+  year?: number;
+  location?: string;
+  details?: string;
+  imgArray?: Array<string>;
+}
 
+// export default function WorksDetails({clientName, year, location, details, imgArray}:WorksDetailsInterface) {
+  export default function WorksDetails() {
+    const router = useRouter();
+    const projectId = router.query.id;
+    const [projInfo, setProjInfo] = useState<WorksDetailsInterface>({});
+    const [isLoading, setIsLoading] = useState(true);
+    
+    useEffect(() => {
+      setIsLoading(true);
+      // console.log('router.query :', router);
+      // console.log('indexProjectData :', indexProjectData);
 
-export default function WorksDetails() {
+    setProjInfo({
+      clientName: indexProjectData[Number(projectId)].title,
+      year: indexProjectData[Number(projectId)].year,
+      location: indexProjectData[Number(projectId)].location,
+      details: indexProjectData[Number(projectId)].title,
+    });
+    setIsLoading(false);
+  }, []);
+
+  // const projectId = router.query.id;
+
+  // const proj = indexProjectData[Number(projectId)];
+  // console.log('proj :', proj);
+
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>
+  // }
+
+  if (isLoading) return <p>Loading...</p>
+
   return (
     <div className="worksDetailsMainDiv">
       <div className="worksDetailsLeft">
         <div className="worksDetailsTitle">
-          <div>Altava Group</div>
+          <div>{projInfo.clientName}</div>
         </div>
         <div className="worksDetailsInfo">
-            <span>Client</span>
-            <span>Altava Group, Your Majesty</span>
+          <span>Client</span>
+          <span>{projInfo.clientName}</span>
         </div>
         <div className="worksDetailsInfo">
-            <span>Year</span>
-            <span>2022</span>
-
+          <span>Year</span>
+          <span>{projInfo.year}</span>
         </div>
         <div className="worksDetailsInfo">
-            <span>Location</span>
-            <span>Amsterdam / Hong Kong / L.A.</span>
-
+          <span>Location</span>
+          <span>{projInfo.location}</span>
         </div>
         <div className="worksDetailsInfo">
-            <span>Services</span>
-            <span>Art Direction, Visual Design, Typography</span>
-
+          <span>Services</span>
+          <span>Art Direction, Visual Design, Typography</span>
         </div>
         <div className="worksDetailsText">
           Ricardo Leite is an Amsterdam-based designer and art director, with a
@@ -40,10 +76,9 @@ export default function WorksDetails() {
         </div>
       </div>
       <div className="worksDetailsRight">
-      <img src="https://via.placeholder.com/700x382" />
-      <img src="https://via.placeholder.com/690x378" />
-      <img src="https://via.placeholder.com/692x367" />
-
+        <img src="https://via.placeholder.com/700x382" />
+        <img src="https://via.placeholder.com/690x378" />
+        <img src="https://via.placeholder.com/692x367" />
       </div>
     </div>
   );
