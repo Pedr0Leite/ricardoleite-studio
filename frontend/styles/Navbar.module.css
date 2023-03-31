@@ -1,0 +1,64 @@
+.navbar {
+  /* display: flex;
+    justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 79px;
+  position: sticky;
+  top: 0px;
+  height: 3rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+  z-index: 1;
+  margin: 15px;
+}
+
+.navbar.down {
+  top: -3rem;
+}
+
+.navbar span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 100%;
+  color: #000000;
+  /* color: white; */
+  padding-top: 15px;
+  cursor: pointer;
+  text-align: right;
+}
+
+.navbar span:hover {
+  color: #0029ff;
+}
+
+.navbar span:nth-child(2) {
+  padding-right: 10px;
+  color: #0029ff;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.navLeftBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navRightBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rl_logo {
+  background-image: url("../public/RL_Logotype.png");
+  /* background-image: url("../public/RL_Logotype_w.png"); */
+  height: 40px;
+  width: 40px;
+  display: block;
+  background-repeat: no-repeat;
+}
