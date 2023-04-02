@@ -3,25 +3,18 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface WorksBlockInterface {
-  id: number;
-  clientName?: string;
-  tags?: Array<string>;
-  workImgs?: Array<string>;
-  block1: Boolean;
-  block2: Boolean;
-  block3: Boolean;
   imgBlock1?: {
-    imgSrc1?: string;
-    imgSrc2?: string;
-    imgSrc3?: string;  
+    0 : { imgSrc1?: string, clientId?: number, clientName?: string, tags?:string},
+    1 : { imgSrc2?: string, clientId?: number, clientName?: string, tags?:string},
+    2 : { imgSrc3?: string, clientId?: number, clientName?: string, tags?:string}   
   };
   imgBlock2?: {
-    imgSrc4?: string;  
-    imgSrc5?: string;  
-    imgSrc6?: string;  
+    0 : { imgSrc4?: string, clientId?: number, clientName?: string, tags?:string},
+    1 : { imgSrc5?: string, clientId?: number, clientName?: string, tags?:string},
+    2 : { imgSrc6?: string, clientId?: number, clientName?: string, tags?:string}   
   };
   imgBlock3?: {
-    imgSrc7?: string;  
+    0 : { imgSrc7?: string, clientId?: number, clientName?: string, tags?:string},
   };
 }
 
@@ -54,17 +47,14 @@ const workBlockVariant = {
 };
 
 export default function WorksBlock({
-  id,
-  clientName,
-  tags,
-  workImgs,
-  block1,
-  block2,
-  block3,
   imgBlock1,
   imgBlock2,
   imgBlock3
 }: WorksBlockInterface) {
+  
+  const localURL = "http://localhost:1337";
+  const id = 1;
+  const clientName = "test";
 
   return (
     // <motion.div
@@ -76,79 +66,85 @@ export default function WorksBlock({
     //   className="worksGrid"
     // >
     <div className="worksGrid">
-      {block1 && <div className="worksRowBlock1">
+      <div className="worksRowBlock1">
         <div className="worksBlock1">
-          <Link href={`/works/${id}`} className="figure">
+          <Link href={`/works/${imgBlock1?.[0].clientId}`} className="figure">
             <p>
-              <img src={imgBlock1?.imgSrc1} />
+              <img src={localURL + imgBlock1?.[0].imgSrc1} />
             </p>
             <p>
-              <span>{clientName}</span>
-              <span>{tags}</span>
+              <span>{imgBlock1?.[0].clientName}</span>
+              <span>{imgBlock1?.[0].tags}</span>
             </p>
           </Link>
         </div>
         <div className="worksBlock2">
-          <Link href={`/works/${id}`} className="figure">
+          <Link href={`/works/${imgBlock1?.[1].clientId}`} className="figure">
             <p>
-              <img src="https://via.placeholder.com/454x255" />
+              {/* <img src="https://via.placeholder.com/454x255" /> */}
+              <img src={localURL + imgBlock1?.[1].imgSrc2} />
             </p>
             <p>
-              <span>{clientName}</span>
-              <span>{tags}</span>
+              <span>{imgBlock1?.[1].clientName}</span>
+              <span>{imgBlock1?.[1].tags}</span>
             </p>
           </Link>
-          <Link href={`/works/${id}`} className="figure">
+          <Link href={`/works/${imgBlock1?.[2].clientId}`} className="figure">
             <p>
-              <img src="https://via.placeholder.com/414x414" />
+              {/* <img src="https://via.placeholder.com/414x414" /> */}
+              <img src={localURL + imgBlock1?.[2].imgSrc3} />
             </p>
             <p>
-              <span>{clientName}</span>
-              <span>{tags}</span>
+              <span>{imgBlock1?.[2].clientName}</span>
+              <span>{imgBlock1?.[2].tags}</span>
             </p>
           </Link>
         </div>
-      </div>}
-      {block2 && <div className="worksRowBlock2">
-        <Link href={`/works/${id}`} className="figure">
+      </div>
+     <div className="worksRowBlock2">
+        <Link href={`/works/${imgBlock2?.[0].clientId}`} className="figure">
           <p>
-            <img src="https://via.placeholder.com/336x336" />
+            {/* <img src="https://via.placeholder.com/336x336" /> */}
+            <img src={localURL + imgBlock2?.[0].imgSrc4} />
           </p>
           <p>
-            <span>{clientName}</span>
-            <span>{tags}</span>
-          </p>
-        </Link>
-        <Link href={`/works/${id}`} className="figure">
-          <p>
-            <img src="https://via.placeholder.com/394x220" />
-          </p>
-          <p>
-            <span>{clientName}</span>
-            <span>{tags}</span>
+            <span>{imgBlock2?.[0].clientName}</span>
+            <span>{imgBlock2?.[0].tags}</span>
           </p>
         </Link>
-        <Link href={`/works/${id}`} className="figure">
+        <Link href={`/works/${imgBlock2?.[1].clientId}`} className="figure">
           <p>
-            <img src="https://via.placeholder.com/395x500" />
+            {/* <img src="https://via.placeholder.com/394x220" /> */}
+            <img src={localURL + imgBlock2?.[1].imgSrc5} />
           </p>
           <p>
-            <span>{clientName}</span>
-            <span>{tags}</span>
-          </p>
-        </Link>
-      </div>}
-      {block3 && <div className="worksRowBlock3">
-        <Link href={`/works/${id}`} className="figure">
-          <p>
-            <img src="https://via.placeholder.com/1361x766" />
-          </p>
-          <p>
-            <span>{clientName}</span>
-            <span>{tags}</span>
+            <span>{imgBlock2?.[1].clientName}</span>
+            <span>{imgBlock2?.[1].tags}</span>
           </p>
         </Link>
-      </div>}
+        <Link href={`/works/${imgBlock2?.[2].clientId}`} className="figure">
+          <p>
+            {/* <img src="https://via.placeholder.com/395x500" /> */}
+            <img src={localURL + imgBlock2?.[2].imgSrc6} />
+          </p>
+          <p>
+            <span>{imgBlock2?.[2].clientName}</span>
+            <span>{imgBlock2?.[2].tags}</span>
+          </p>
+        </Link>
+      </div>
+      <div className="worksRowBlock3">
+        <Link href={`/works/${imgBlock3?.[0].clientId}`} className="figure">
+          <p>
+            {/* <img src="https://via.placeholder.com/1361x766" /> */}
+            <img src={localURL + imgBlock3?.[0].imgSrc7} />
+          </p>
+          <p>
+            <span>{imgBlock3?.[0].clientName}</span>
+            <span>{imgBlock3?.[0].tags}</span>
+          </p>
+        </Link>
+      </div>
       {/* </motion.div> */}
     </div>
   );
