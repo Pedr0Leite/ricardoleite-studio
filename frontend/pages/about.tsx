@@ -6,6 +6,7 @@ import Block from "@/components/About/Block/Block";
 import mainImg from "../public/About/main1.png";
 import mainAbstrc from "../public/About/abstract_img_1.png";
 import Image from "next/image";
+import SlidingText from "@/components/SlidingText";
 
 export default function About() {
   return (
@@ -59,7 +60,7 @@ export default function About() {
               <p>Amsterdam,</p>
               <p>2023.</p>
             </div>
-            <div>
+            <div className={styles.mainAbstrcImg}>
               <Image
                 src={mainAbstrc.src}
                 height="100"
@@ -172,6 +173,7 @@ export default function About() {
             <p>Site by <u>Pedro Leite</u></p>
           </div>
         </div>
+        <SlidingText/>
       </div>
     </>
   );

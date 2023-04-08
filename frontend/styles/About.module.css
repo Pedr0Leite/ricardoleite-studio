@@ -85,14 +85,17 @@
   padding-bottom: 20px;
 }
 
-.firstBlockRight div:nth-child(2) {
+/* .firstBlockRight div:nth-child(2) { */
+.mainAbstrcImg {
   /* background-color: #0029ff; */
   background-image: url("../public/About/main1.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 100%;
   width: 100%;
+  aspect-ratio: 4 / 5;
 }
+
 /* .firstBlockRight div:nth-child(2) img{
   height: 100% !important;
   width: 100% !important;
@@ -103,7 +106,7 @@
   height: 100% !important;
   width: 33% !important;
   position: fixed;
-  top: 0;
+  top: 30px;
   right: 30px;
 }
 

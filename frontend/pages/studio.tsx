@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "@/styles/Studio.module.css";
 import Spline from "@splinetool/react-spline";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
@@ -7,6 +7,14 @@ import AnimatedText from "@/components/AnimatedText";
 import MainTitle from "@/components/MainTitle/MainTitle";
 
 export default function Studio() {
+  const objectToAnimate = useRef();
+
+  function onLoad(spline:any) {
+    const obj = spline.findObjectByName('Cube');
+    // save the object in a ref for later use
+    objectToAnimate.current = obj;
+  }
+
   return (
     <>
     {/* <div className={styles.mainDiv}>
@@ -49,9 +57,11 @@ export default function Studio() {
     <MainTitle/>
     <Spline
         className={styles.threedbg}
+        onLoad={onLoad}
         // scene="https://prod.spline.design/T5YJEmxFWKkyv-Dc/scene.splinecode"
         // scene="https://prod.spline.design/ce3191l5O9zpxI7P/scene.splinecode"
         scene="https://prod.spline.design/MpvHJsLyB5i58B9q/scene.splinecode"
+        // scene="https://prod.spline.design/BkrGLpQQ4CiqLZ-m/scene.splinecode"
 
 />
     </>
