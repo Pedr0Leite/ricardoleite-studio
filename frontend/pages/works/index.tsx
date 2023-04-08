@@ -64,7 +64,6 @@ export default function Works({ projects }: ProjectsInterface) {
     (section) => section.attributes.sectionNumber == 3
   );
 
-  // if(sectionOne != undefined || Array(sectionOne).length != 0){
   const sectionOneRowOne = sectionOne.filter(
     (block) => block.attributes.BlockNumber == "block1"
   );
@@ -74,10 +73,8 @@ export default function Works({ projects }: ProjectsInterface) {
   const sectionOneRowThree = sectionOne.filter(
     (block) => block.attributes.BlockNumber == "block3"
   );
-  // }
 
-  // if(sectionTwo != undefined || Array(sectionTwo).length != 0){
-  // console.log(sectionTwoRowOne[0].attributes.img?.data.attributes.url)
+
   const sectionTwoRowOne = sectionTwo.filter(
     (block) => block.attributes.BlockNumber == "block1"
   );
@@ -87,9 +84,7 @@ export default function Works({ projects }: ProjectsInterface) {
   const sectionTwoRowThree = sectionTwo.filter(
     (block) => block.attributes.BlockNumber == "block3"
   );
-  // }
 
-  // if(sectionThree != undefined || Array(sectionThree).length != 0){
   const sectionThreeRowOne = sectionThree.filter(
     (block) => block.attributes.BlockNumber == "block1"
   );
@@ -99,7 +94,6 @@ export default function Works({ projects }: ProjectsInterface) {
   const sectionThreeRowThree = sectionThree.filter(
     (block) => block.attributes.BlockNumber == "block1"
   );
-  // }
 
   return (
     <>
@@ -190,7 +184,7 @@ export default function Works({ projects }: ProjectsInterface) {
             }}
           />
         )}
-        {sectionTwo && (
+        {/* {sectionTwo && (
           <WorksBlock
             key={"sectionTwo"}
             imgBlock1={{
@@ -295,7 +289,7 @@ export default function Works({ projects }: ProjectsInterface) {
               }
             }}
           />
-        )}
+        )} */}
       </div>
     </>
   );
