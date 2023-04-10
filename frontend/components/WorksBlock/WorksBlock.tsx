@@ -1,20 +1,56 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SlidingText from "../SlidingText";
 
 interface WorksBlockInterface {
   imgBlock1?: {
-    0 : { imgSrc1?: string, clientId?: number, clientName?: string, tags?:string},
-    1 : { imgSrc2?: string, clientId?: number, clientName?: string, tags?:string},
-    2 : { imgSrc3?: string, clientId?: number, clientName?: string, tags?:string}   
+    0: {
+      imgSrc1?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
+    1: {
+      imgSrc2?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
+    2: {
+      imgSrc3?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
   };
   imgBlock2?: {
-    0 : { imgSrc4?: string, clientId?: number, clientName?: string, tags?:string},
-    1 : { imgSrc5?: string, clientId?: number, clientName?: string, tags?:string},
-    2 : { imgSrc6?: string, clientId?: number, clientName?: string, tags?:string}   
+    0: {
+      imgSrc4?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
+    1: {
+      imgSrc5?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
+    2: {
+      imgSrc6?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
   };
   imgBlock3?: {
-    0 : { imgSrc7?: string, clientId?: number, clientName?: string, tags?:string},
+    0: {
+      imgSrc7?: string;
+      clientId?: number;
+      clientName?: string;
+      tags?: string;
+    };
   };
 }
 
@@ -49,9 +85,8 @@ const workBlockVariant = {
 export default function WorksBlock({
   imgBlock1,
   imgBlock2,
-  imgBlock3
+  imgBlock3,
 }: WorksBlockInterface) {
-
   return (
     // <motion.div
     //   variants={workBlockVariant}
@@ -97,7 +132,7 @@ export default function WorksBlock({
           </Link>
         </div>
       </div>
-     <div className="worksRowBlock2">
+      <div className="worksRowBlock2">
         <Link href={`/works/${imgBlock2?.[0].clientId}`} className="figure">
           <p>
             {/* <img src="https://via.placeholder.com/336x336" /> */}
@@ -142,6 +177,7 @@ export default function WorksBlock({
         </Link>
       </div>
       {/* </motion.div> */}
+      <SlidingText />
     </div>
   );
 }

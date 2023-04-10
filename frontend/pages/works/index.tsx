@@ -73,7 +73,6 @@ export default function Works({ projects }: any) {
     (section:any) => section.sectionNumber == 3
   );
 
-  // if(sectionOne != undefined || Array(sectionOne).length != 0){
   const sectionOneRowOne = sectionOne.filter(
     (block:any) => block.blockNumber == "block1"
     );
@@ -83,7 +82,6 @@ export default function Works({ projects }: any) {
   const sectionOneRowThree = sectionOne.filter(
     (block:any) => block.blockNumber == "block3"
   );
-  // }
 
   // // if(sectionTwo != undefined || Array(sectionTwo).length != 0){
   // // console.log(sectionTwoRowOne[0].img?.data.url)
