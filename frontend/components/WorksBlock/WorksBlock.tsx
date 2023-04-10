@@ -87,10 +87,6 @@ export default function WorksBlock({
   imgBlock2,
   imgBlock3,
 }: WorksBlockInterface) {
-  const localURL = "http://localhost:1337";
-  const id = 1;
-  const clientName = "test";
-
   return (
     // <motion.div
     //   variants={workBlockVariant}
@@ -104,10 +100,9 @@ export default function WorksBlock({
       <div className="worksRowBlock1">
         <div className="worksBlock1">
           <Link href={`/works/${imgBlock1?.[0].clientId}`} className="figure">
-            <div className="figure-1"></div>
-            {/* <p>
-              <img src={localURL + imgBlock1?.[0].imgSrc1}/>
-            </p> */}  
+            <p>
+              <img src={imgBlock1?.[0].imgSrc1} />
+            </p>
             <p>
               <span>{imgBlock1?.[0].clientName}</span>
               <span>{imgBlock1?.[0].tags}</span>
@@ -115,39 +110,33 @@ export default function WorksBlock({
           </Link>
         </div>
         <div className="worksBlock2">
-          <div className="worksBlock2Row1">
-            <Link href={`/works/${imgBlock1?.[1].clientId}`} className="figure">
-              <div className="figure-2 aspect16_9"></div>
-              {/* <p>
-              <img src="https://via.placeholder.com/454x255" />
-              <img src={localURL + imgBlock1?.[1].imgSrc2} />
-            </p> */}
-              <p>
-                <span>{imgBlock1?.[1].clientName}</span>
-                <span>{imgBlock1?.[1].tags}</span>
-              </p>
-            </Link>
-          </div>
-          <div className="worksBlock2Row2">
-            <Link href={`/works/${imgBlock1?.[2].clientId}`} className="figure">
-              <div className="figure-3 aspect1_1"></div>
-              {/* <p>
-              <img src="https://via.placeholder.com/414x414" />
-              <img src={localURL + imgBlock1?.[2].imgSrc3} />
-            </p> */}
-              <p>
-                <span>{imgBlock1?.[2].clientName}</span>
-                <span>{imgBlock1?.[2].tags}</span>
-              </p>
-            </Link>
-          </div>
+          <Link href={`/works/${imgBlock1?.[1].clientId}`} className="figure">
+            <p>
+              {/* <img src="https://via.placeholder.com/454x255" /> */}
+              <img src={imgBlock1?.[1].imgSrc2} />
+            </p>
+            <p>
+              <span>{imgBlock1?.[1].clientName}</span>
+              <span>{imgBlock1?.[1].tags}</span>
+            </p>
+          </Link>
+          <Link href={`/works/${imgBlock1?.[2].clientId}`} className="figure">
+            <p>
+              {/* <img src="https://via.placeholder.com/414x414" /> */}
+              <img src={imgBlock1?.[2].imgSrc3} />
+            </p>
+            <p>
+              <span>{imgBlock1?.[2].clientName}</span>
+              <span>{imgBlock1?.[2].tags}</span>
+            </p>
+          </Link>
         </div>
       </div>
       <div className="worksRowBlock2">
         <Link href={`/works/${imgBlock2?.[0].clientId}`} className="figure">
           <p>
             {/* <img src="https://via.placeholder.com/336x336" /> */}
-            <img src={localURL + imgBlock2?.[0].imgSrc4} />
+            <img src={imgBlock2?.[0].imgSrc4} />
           </p>
           <p>
             <span>{imgBlock2?.[0].clientName}</span>
@@ -157,7 +146,7 @@ export default function WorksBlock({
         <Link href={`/works/${imgBlock2?.[1].clientId}`} className="figure">
           <p>
             {/* <img src="https://via.placeholder.com/394x220" /> */}
-            <img src={localURL + imgBlock2?.[1].imgSrc5} />
+            <img src={imgBlock2?.[1].imgSrc5} />
           </p>
           <p>
             <span>{imgBlock2?.[1].clientName}</span>
@@ -167,7 +156,7 @@ export default function WorksBlock({
         <Link href={`/works/${imgBlock2?.[2].clientId}`} className="figure">
           <p>
             {/* <img src="https://via.placeholder.com/395x500" /> */}
-            <img src={localURL + imgBlock2?.[2].imgSrc6} />
+            <img src={imgBlock2?.[2].imgSrc6} />
           </p>
           <p>
             <span>{imgBlock2?.[2].clientName}</span>
@@ -179,7 +168,7 @@ export default function WorksBlock({
         <Link href={`/works/${imgBlock3?.[0].clientId}`} className="figure">
           <p>
             {/* <img src="https://via.placeholder.com/1361x766" /> */}
-            <img src={localURL + imgBlock3?.[0].imgSrc7} />
+            <img src={imgBlock3?.[0].imgSrc7} />
           </p>
           <p>
             <span>{imgBlock3?.[0].clientName}</span>

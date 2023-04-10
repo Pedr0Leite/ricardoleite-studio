@@ -1,85 +1,108 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import indexProjectData from "../../indexProjectData.json";
+import specificProjectData from "../../specificProjectData.json";
+import { GraphQLClient, request, gql } from 'graphql-request';
 
-// //Runs at build time - PATHS
-export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:1337/api/projects");
-  const data = await res.json();
+// interface SpecificProjectInterface {
+//     projects: [
+//       {
+//         project_id: number,
+//         title: string,
+//         tags: Array<string>,
+//         year: number,
+//         location: string,
+//         active: boolean,
+//         info: string,
+//         media: Array<object>
+//       }
+//     ]
+// }
 
-  const paths = data.data.map((_project: any) => {
-    return {
-      params: { id: _project.id.toString() },
-    };
-  });
+// const projectsQuery = `
+// query Projects {
+//   projects {
+//     project_id
+//     title
+//     tags
+//     year
+//     location
+//     active
+//     info
+//     media {
+//       fileName
+//       url
+//     }
+//   }
+// }      
+// `;
 
-  return {
-    paths: paths,
-    fallback: false, //fallback pages
-  };
-};
+// // //Runs at build time - PATHS
+// export const getStaticPaths = async () => {
+//   const hygraph = new GraphQLClient(
+//     'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master'
+//   );  
 
-export const getStaticProps = async (context: any) => {
-  const id = context.params.id;
-  const res = await fetch(
-    `http://localhost:1337/api/projects/${id}?populate=*`
-  );
-  const data = await res.json();
+//   const data:any = await hygraph.request(projectsQuery);
+  
+//   const paths = data.projects.map((_project: any) => {
+//     return {
+//       params: { id: _project.project_id.toString() },
+//     };
+//   });
 
-  return {
-    props: { project: data.data, projectImgs: data.data.attributes.media.data },
-  };
-};
+//   return {
+//     paths: paths,
+//     fallback: false, //fallback pages
+//   };
+// };
 
-interface WorksDetailsInterface {
-  clientName?: string;
-  year?: number;
-  location?: string;
-  details?: string;
-  imgArray?: Array<string>;
-}
+// export const getStaticProps = async (context: any) => {
+//   const id = context.params.id;
+//   const hygraph = new GraphQLClient(
+//     'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master'
+//   );  
 
-interface ProjectObjectInterface {
-  id: number;
-  attributes: {
-    createdAt?: string;
-    info?: string;
-    location?: string;
-    media?: Array<Object>;
-    mediaCount?: number;
-    publishedAt?: string;
-    tags?: string;
-    title?: string;
-    updatedAt?: string;
-    year?: number;
-  };
-}
+//   const data:SpecificProjectInterface = await hygraph.request(
+//     `
+//     query SpecificID {
+//   projects(where: { project_id: ${id} }) {
+//     project_id
+//     title
+//     tags
+//     year
+//     location
+//     active
+//     info
+//     media {
+//       fileName
+//       url
+//     }
+//   }
+// }     
+//     `
+//   );
 
-interface ProjectsInterface {
-  project: ProjectObjectInterface;
-  projectImgs: Array<Object>;
-}
+//   return {
+//     props: { project: data.projects[0], projectImgs: data.projects[0].media },
+//   };
+// };
 
-export default function WorksDetails({
-  project,
-  projectImgs,
-}: ProjectsInterface) {
 
-  // console.log(`http://localhost:1337${projects.attributes.media.data[0].attributes.url}`)
+// interface ProjectsInterface {
+//   project: SpecificProjectInterface;
+//   projectImgs: Array<Object>;
+// }
 
+// export default function WorksDetails({project, projectImgs,}: ProjectsInterface) {    
+export default function WorksDetails(project:any, projectImgs:any) {
+  project = specificProjectData.data.projects[0];
   const router = useRouter();
   const projectId = router.query.id;
-  const [projInfo, setProjInfo] = useState<WorksDetailsInterface>({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-  //   setProjInfo({
-  //     clientName: indexProjectData[Number(projectId)].title,
-  //     year: indexProjectData[Number(projectId)].year,
-  //     location: indexProjectData[Number(projectId)].location,
-  //     details: indexProjectData[Number(projectId)].title,
-  //   });
+    // setIsLoading(true);
+ 
     setIsLoading(false);
   }, []);
 
@@ -87,9 +110,9 @@ export default function WorksDetails({
 
   // const proj = indexProjectData[Number(projectId)];
 
-  // if (router.isFallback) {
-  //   return <div>Loading...</div>
-  // }
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -97,26 +120,26 @@ export default function WorksDetails({
     <div className="worksDetailsMainDiv">
       <div className="worksDetailsLeft">
         <div className="worksDetailsTitle">
-          <div>{project.attributes.title}</div>
+          <div>{project.title}</div>
         </div>
         <div className="worksDetailsInfo">
           <span>Client</span>
-          <span>{project.attributes.title}</span>
+          <span>{project.title}</span>
         </div>
         <div className="worksDetailsInfo">
           <span>Year</span>
-          <span>{project.attributes.year}</span>
+          <span>{project.year}</span>
         </div>
         <div className="worksDetailsInfo">
           <span>Location</span>
-          <span>{project.attributes.location}</span>
+          <span>{project.location}</span>
         </div>
         <div className="worksDetailsInfo">
           <span>Services</span>
-          <span>{project.attributes.tags}</span>
+          <span>{project.tags}</span>
         </div>
         <div className="worksDetailsText">
-          {project.attributes.info}
+          {project.info}
         </div>
       </div>
       <div className="worksDetailsRight">
