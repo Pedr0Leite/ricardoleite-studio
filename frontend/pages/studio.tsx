@@ -5,8 +5,40 @@ import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import AnimatedTitle from "@/components/AnimatedTitle";
 import AnimatedText from "@/components/AnimatedText";
 import MainTitle from "@/components/MainTitle/MainTitle";
+import { GraphQLClient } from 'graphql-request';
+
+// //Runs at build time
+// export const getStaticProps = async () => {
+//     const hygraph = new GraphQLClient(
+//       'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master'
+//     );
+  
+//     const data = await hygraph.request(
+//       `
+//       query TestDatas {
+//         testDatas {
+//           createdAt
+//           id
+//           name
+//           publishedAt
+//           updatedAt
+//           img {
+//             url
+//           }
+//         }
+//       }
+//       `
+//     );
+  
+//     return {
+//       props: {
+//         data,
+//       },
+//     };
+//   }
 
 export default function Studio() {
+
   return (
     <>
     {/* <div className={styles.mainDiv}>
