@@ -1,11 +1,18 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import specificProjectData from "../../specificProjectData.json";
 import { GraphQLClient, request, gql } from 'graphql-request';
+import Link from "next/link";
 
 // interface SpecificProjectInterface {
+//     title: ReactNode;
+//     year: ReactNode;
+//     location: ReactNode;
+//     tags: ReactNode;
+//     info: ReactNode;
 //     projects: [
 //       {
+//         media: any;
 //         project_id: number,
 //         title: string,
 //         tags: Array<string>,
@@ -13,7 +20,7 @@ import { GraphQLClient, request, gql } from 'graphql-request';
 //         location: string,
 //         active: boolean,
 //         info: string,
-//         media: Array<object>
+//         images: Array<object>
 //       }
 //     ]
 // }
@@ -73,7 +80,7 @@ import { GraphQLClient, request, gql } from 'graphql-request';
 //     location
 //     active
 //     info
-//     media {
+//     images {
 //       fileName
 //       url
 //     }
@@ -98,6 +105,8 @@ export default function WorksDetails(project:any, projectImgs:any) {
   project = specificProjectData.data.projects[0];
   const router = useRouter();
   const projectId = router.query.id;
+  const prevProjectId = Number(projectId) - 1;
+  const nextProjectId = Number(projectId) + 1;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -143,10 +152,21 @@ export default function WorksDetails(project:any, projectImgs:any) {
         </div>
       </div>
       <div className="worksDetailsRight">
-        <img src="https://via.placeholder.com/700x382" />
-        <img src="https://via.placeholder.com/690x378" />
-        <img src="https://via.placeholder.com/692x367" />
+        {/* <img src="https://via.placeholder.com/700x382" className="specificFigure-1 aspect16_9"/> */}
+        <img src={specificProjectData.data.projects[0].images[0].url} className="specificFigure aspect16_9"/>
+        {/* <img src="https://via.placeholder.com/690x378" className="specificFigure-2"/> */}
+        <img src={specificProjectData.data.projects[0].images[0].url} className="specificFigure aspect16_9"/>
+        {/* <img src="https://via.placeholder.com/692x367" className="specificFigure-3"/> */}
+        <img src={specificProjectData.data.projects[0].images[0].url} className="specificFigure aspect16_9"/>
         {/* <img src={`http://localhost:1337${projects.data.attributes.media.data[0].attributes.url}`} /> */}
+        <div className="workDetailsRightButtons">
+          {prevProjectId >= 0 && <Link href={`/works/${prevProjectId}`}>&#10094; Prev</Link>}
+          <Link href={`/works/${nextProjectId}`}>Next &#10095;</Link>
+        </div>
+        <div className="workDetailsNextPrevProject">
+          <span>Altava</span>
+          <span>Off the Grid</span>
+        </div>
       </div>
     </div>
   );

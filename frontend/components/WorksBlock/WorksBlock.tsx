@@ -101,7 +101,7 @@ export default function WorksBlock({
         <div className="worksBlock1">
           <Link href={`/works/${imgBlock1?.[0].clientId}`} className="figure">
             <p>
-              <img src={imgBlock1?.[0].imgSrc1} />
+              <img loading="lazy" src={imgBlock1?.[0].imgSrc1} className="figure-1"/>
             </p>
             <p>
               <span>{imgBlock1?.[0].clientName}</span>
@@ -112,8 +112,8 @@ export default function WorksBlock({
         <div className="worksBlock2">
           <Link href={`/works/${imgBlock1?.[1].clientId}`} className="figure">
             <p>
-              {/* <img src="https://via.placeholder.com/454x255" /> */}
-              <img src={imgBlock1?.[1].imgSrc2} />
+              {/* <img loading="lazy" src="https://via.placeholder.com/454x255" /> */}
+              <img loading="lazy" src={imgBlock1?.[1].imgSrc2} className="figure-2 aspect16_9"/>
             </p>
             <p>
               <span>{imgBlock1?.[1].clientName}</span>
@@ -122,8 +122,8 @@ export default function WorksBlock({
           </Link>
           <Link href={`/works/${imgBlock1?.[2].clientId}`} className="figure">
             <p>
-              {/* <img src="https://via.placeholder.com/414x414" /> */}
-              <img src={imgBlock1?.[2].imgSrc3} />
+              {/* <img loading="lazy" src="https://via.placeholder.com/414x414" /> */}
+              <img loading="lazy" src={imgBlock1?.[2].imgSrc3} className="figure-3 aspect1_1"/>
             </p>
             <p>
               <span>{imgBlock1?.[2].clientName}</span>
@@ -135,8 +135,8 @@ export default function WorksBlock({
       <div className="worksRowBlock2">
         <Link href={`/works/${imgBlock2?.[0].clientId}`} className="figure">
           <p>
-            {/* <img src="https://via.placeholder.com/336x336" /> */}
-            <img src={imgBlock2?.[0].imgSrc4} />
+            {/* <img loading="lazy" src="https://via.placeholder.com/336x336" /> */}
+            <img loading="lazy" src={imgBlock2?.[0].imgSrc4} className="figure-4 aspect1_1"/>
           </p>
           <p>
             <span>{imgBlock2?.[0].clientName}</span>
@@ -145,8 +145,8 @@ export default function WorksBlock({
         </Link>
         <Link href={`/works/${imgBlock2?.[1].clientId}`} className="figure">
           <p>
-            {/* <img src="https://via.placeholder.com/394x220" /> */}
-            <img src={imgBlock2?.[1].imgSrc5} />
+            {/* <img loading="lazy" src="https://via.placeholder.com/394x220" /> */}
+            <img loading="lazy" src={imgBlock2?.[1].imgSrc5} className="figure-5 aspect16_9"/>
           </p>
           <p>
             <span>{imgBlock2?.[1].clientName}</span>
@@ -155,8 +155,8 @@ export default function WorksBlock({
         </Link>
         <Link href={`/works/${imgBlock2?.[2].clientId}`} className="figure">
           <p>
-            {/* <img src="https://via.placeholder.com/395x500" /> */}
-            <img src={imgBlock2?.[2].imgSrc6} />
+            {/* <img loading="lazy" src="https://via.placeholder.com/395x500" /> */}
+            <img loading="lazy" src={imgBlock2?.[2].imgSrc6} className="figure-6 aspect4_5"/>
           </p>
           <p>
             <span>{imgBlock2?.[2].clientName}</span>
@@ -167,8 +167,8 @@ export default function WorksBlock({
       <div className="worksRowBlock3">
         <Link href={`/works/${imgBlock3?.[0].clientId}`} className="figure">
           <p>
-            {/* <img src="https://via.placeholder.com/1361x766" /> */}
-            <img src={imgBlock3?.[0].imgSrc7} />
+            {/* <img loading="lazy" src="https://via.placeholder.com/1361x766" /> */}
+            <img loading="lazy" src={imgBlock3?.[0].imgSrc7} className="figure-7 aspect16_9" />
           </p>
           <p>
             <span>{imgBlock3?.[0].clientName}</span>
@@ -177,7 +177,7 @@ export default function WorksBlock({
         </Link>
       </div>
       {/* </motion.div> */}
-      <SlidingText />
+      {/* <SlidingText/> */}
     </div>
   );
 }

@@ -110,6 +110,10 @@
   padding-bottom: 100px;
 }
 
+.worksRowBlock1, .worksRowBlock2, .worksRowBlock3{
+  margin: 5px;
+}
+
 .worksRowBlock1 {
   /* background-color: aqua; */
   display: flex;
@@ -136,6 +140,9 @@
   width: -webkit-fill-available; */
 }
 
+.worksBlock2 a:nth-child(2) {
+  align-self: flex-end;
+}
 /* .worksBlock2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -211,26 +218,32 @@
 }
 
 .figure-1 {
-  background-image: url("../public/clientsImg/altiva1_copy.png");
-  background-repeat: no-repeat;
-  background-size: contain;
   width: 712px;
-  height: 815px;
 }
 
 .figure-2 {
-  background-image: url("../public/clientsImg/nikeHanging.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 640px;
+  width: 480px;
 }
 
 .figure-3 {
-  background-image: url("../public/clientsImg/RL_A_Type_Layered_RLWEB.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  align-self: flex-end;
   width: 420px;
+}
+
+.figure-4 {
+  width: 336px;
+}
+
+.figure-5, .figure-6 {
+  width: 400px;
+}
+
+.figure-7 {
+  width: 1361px;
+}
+
+.specificFigure {
+  /* width: 750px; */
+  width: 100%;
 }
 
 .figure p span:first-child {
@@ -325,9 +338,56 @@
 }
 
 .worksDetailsRight {
-  background-color: rosybrown;
+  /* background-color: rosybrown; */
   grid-area: 1 / 2;
+  border-bottom: 1px solid black;
 }
+
+.workDetailsRightButtons{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 27px;
+  height: 275px;
+  align-items: flex-end;
+  margin-bottom: -27px;
+}
+
+.workDetailsRightButtons a {
+  height: 35px;
+  width: 100px;
+  margin-bottom: 10px;
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 100%;
+  color: #2151FC;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.workDetailsNextPrevProject {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  margin-top: 5px;
+  margin-right: 25px;
+  width: -webkit-fill-available;
+}
+
+.workDetailsNextPrevProject span {
+  font-family: SuisseIntl-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: right;
+  
+  color: #000000;
+}
+
 
 /* clock */
 
@@ -366,4 +426,29 @@
   font-family: SuisseIntl-Regular;
   padding-left: 30px;
   padding-top: 5px;
+}
+
+/* Loader */
+.classic-2 {
+  position: absolute;
+    top: 60%;
+    left: 45vw;
+    z-index: 10;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding-bottom: 8px;
+  background:linear-gradient(currentColor 0 0) bottom left/0% 3px no-repeat;
+  animation:c2 2s linear infinite;
+}
+@keyframes c2 {to{background-size: 100% 3px}}
+
+
+
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+  
 }

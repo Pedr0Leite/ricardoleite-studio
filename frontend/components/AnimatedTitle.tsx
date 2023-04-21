@@ -67,7 +67,7 @@ export default function AnimatedTitle() {
           <Word
             ref={ref}
             aria-hidden="true"
-            key={index}
+            key={`title-word-${index}`}
             initial="hidden"
             animate={ctrls}
             variants={wordAnimation}
@@ -80,7 +80,7 @@ export default function AnimatedTitle() {
               return (
                 <Character
                   aria-hidden="true"
-                  key={index}
+                  key={`title-char-${index}`}
                   variants={characterAnimation}
                 >
                   {character}
