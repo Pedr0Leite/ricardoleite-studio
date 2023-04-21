@@ -151,11 +151,9 @@ export default function SlidingText() {
           variants={marqueeVariants}
           animate="animate"
         >
-          {words.map((_word:string) => { 
+          {words.map((_word:string, id:number) => { 
             return (
-                <>
-                <span>{_word}</span>
-                </>
+                <span key={`span-${_word}-${id}`}>{_word}</span>
             )
          })}
         </motion.div>

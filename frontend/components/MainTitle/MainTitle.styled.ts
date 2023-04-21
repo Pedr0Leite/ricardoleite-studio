@@ -8,6 +8,10 @@ interface colorInterface {
 export const MainDiv = styled.div`
     width: 100%;
     height: 100%;
+
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
 `
 
 export const Title = styled.div<colorInterface>`
