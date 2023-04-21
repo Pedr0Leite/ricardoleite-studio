@@ -71,7 +71,6 @@
 .cardImg {
     height: 517px;
     width: 453px;
-    background-image: url('../public/clientsImg/altiva1.png');
     position: fixed;
     z-index: 2;
     left: 25%;

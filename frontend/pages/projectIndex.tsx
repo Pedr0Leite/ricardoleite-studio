@@ -3,8 +3,53 @@ import indexProjectData from "../indexProjectData.json";
 import styles from "@/styles/ProjectIndex.module.css";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { GraphQLClient } from "graphql-request";
+import ProjectIndexBlock from "@/components/ProjectIndexBlock/ProjectIndexBlock";
 
-export default function ProjectIndex() {
+const workBlocksQuery = `
+query Projects {
+  projects (first: 20) {
+    project_id
+    title
+    tags
+    year
+    location
+    images {
+      url
+    }
+  }
+}     
+`;
+
+//Runs at build time
+export const getStaticProps = async () => {
+  const hygraph = new GraphQLClient(
+    "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master"
+  );
+
+  const data = await hygraph.request(workBlocksQuery);
+
+  return {
+    props: {
+      projects: data,
+    },
+  };
+};
+
+interface projectInterface {
+    project_id: number,
+    title: string,
+    tags: Array<string>,
+    year: number,
+    location: string,
+    images: Array<object>
+}
+
+
+export default function ProjectIndex({projects} : any) {
+const sortedProjects = projects.projects.sort(function(a:projectInterface, b:projectInterface) {
+  return b.year - a.year;
+});
   //   const cardImgVariants = {
   //     hidden: {
   //       opacity: 0,
@@ -51,32 +96,10 @@ export default function ProjectIndex() {
 
   return (
     <div className={styles.projectIndexMain}>
-      {indexProjectData !== undefined &&
-        indexProjectData.map((_value: any) => {
+      {sortedProjects !== undefined &&
+        sortedProjects.map((_value: any) => {
           return (
-            <motion.div
-              initial="hidden"
-              whileHover="visible"
-              animate="hidden"
-              key={_value.id}
-            >
-              <Link href={`/works/${_value.id}`}>
-                <div className={styles.projectIndexBlock}>
-                  <div className={styles.projectIndexBlockOne}>
-                    <div>{_value.title}</div>
-                    <div>{_value.img} img</div>
-                  </div>
-                  <div className={styles.projectIndexBlockTwo}>
-                    <div>{_value.tags.join(", ")}</div>
-                    <div>{_value.year}</div>
-                  </div>
-                </div>
-              </Link>
-              <motion.div
-                variants={cardImgVariants}
-                className={styles.cardImg}
-              ></motion.div>
-            </motion.div>
+            <ProjectIndexBlock key={_value.project_id} project_id={_value.project_id} title={_value.title} tags={_value.tags} year={_value.year} location={_value.location} images={_value.images}/>
           );
         })}
       {/* <motion.div

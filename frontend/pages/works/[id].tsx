@@ -1,171 +1,218 @@
 import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
 import specificProjectData from "../../specificProjectData.json";
-import { GraphQLClient, request, gql } from 'graphql-request';
+import { GraphQLClient, request, gql } from "graphql-request";
 import Link from "next/link";
+import Image from 'next/image'
 
-// interface SpecificProjectInterface {
-//     title: ReactNode;
-//     year: ReactNode;
-//     location: ReactNode;
-//     tags: ReactNode;
-//     info: ReactNode;
-//     projects: [
-//       {
-//         media: any;
-//         project_id: number,
-//         title: string,
-//         tags: Array<string>,
-//         year: number,
-//         location: string,
-//         active: boolean,
-//         info: string,
-//         images: Array<object>
-//       }
-//     ]
-// }
+interface SpecificProjectInterface {
+  title: ReactNode;
+  year: ReactNode;
+  location: ReactNode;
+  tags: ReactNode;
+  info: ReactNode;
+  projects: [
+    {
+      media: any;
+      project_id: number;
+      title: string;
+      tags: Array<string>;
+      year: number;
+      location: string;
+      active: boolean;
+      info: string;
+      images: Array<object>;
+    }
+  ];
+}
 
-// const projectsQuery = `
-// query Projects {
-//   projects {
-//     project_id
-//     title
-//     tags
-//     year
-//     location
-//     active
-//     info
-//     media {
-//       fileName
-//       url
-//     }
-//   }
-// }      
-// `;
+interface projectInterface {
+  project_id: number;
+  title: string;
+  tags: Array<string>;
+  year: number;
+  location: string;
+  info: string;
+  images: Array<{
+    url: string;
+  }>;
+}
 
-// // //Runs at build time - PATHS
-// export const getStaticPaths = async () => {
-//   const hygraph = new GraphQLClient(
-//     'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master'
-//   );  
+const projectsQuery = `
+query Projects {
+  projects {
+    project_id
+    title
+    tags
+    year
+    location
+    info
+    images {
+      fileName
+      url
+    }
+  }
+}      
+`;
 
-//   const data:any = await hygraph.request(projectsQuery);
-  
-//   const paths = data.projects.map((_project: any) => {
-//     return {
-//       params: { id: _project.project_id.toString() },
-//     };
-//   });
+// //Runs at build time - PATHS
+export const getStaticPaths = async () => {
+  const hygraph = new GraphQLClient(
+    "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master"
+  );
 
-//   return {
-//     paths: paths,
-//     fallback: false, //fallback pages
-//   };
-// };
+  const data: any = await hygraph.request(projectsQuery);
 
-// export const getStaticProps = async (context: any) => {
-//   const id = context.params.id;
-//   const hygraph = new GraphQLClient(
-//     'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master'
-//   );  
+  const paths = data.projects.map((_project: any) => {
+    return {
+      params: { id: _project.project_id.toString() },
+    };
+  });
 
-//   const data:SpecificProjectInterface = await hygraph.request(
-//     `
-//     query SpecificID {
-//   projects(where: { project_id: ${id} }) {
-//     project_id
-//     title
-//     tags
-//     year
-//     location
-//     active
-//     info
-//     images {
-//       fileName
-//       url
-//     }
-//   }
-// }     
-//     `
-//   );
+  return {
+    paths: paths,
+    fallback: false, //fallback pages
+  };
+};
 
-//   return {
-//     props: { project: data.projects[0], projectImgs: data.projects[0].media },
-//   };
-// };
+export const getStaticProps = async (context: any) => {
+  const id = context.params.id;
+  const hygraph = new GraphQLClient(
+    "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg7wfxo31jmr01uibwk16v1x/master"
+  );
 
+  //   const data: SpecificProjectInterface = await hygraph.request(
+  //     `
+  //     query SpecificID {
+  //     projects(where: { project_id: ${id} }) {
+  //       project_id
+  //       title
+  //       tags
+  //       year
+  //       location
+  //       info
+  //       images {
+  //         fileName
+  //         url
+  //       }
+  //   }
+  // }`);
+  const data: SpecificProjectInterface = await hygraph.request(
+    `
+    query SpecificID {
+      projects {
+        project_id
+        title
+        tags
+        year
+        location
+        info
+        images {
+          url
+        }
+      }
+}`
+  );
 
-// interface ProjectsInterface {
-//   project: SpecificProjectInterface;
-//   projectImgs: Array<Object>;
-// }
+  return {
+    // props: { project: data.projects, projectImgs: data.projects[0].images },
+    props: { project: data.projects },
+  };
+};
 
-// export default function WorksDetails({project, projectImgs,}: ProjectsInterface) {    
-export default function WorksDetails(project:any, projectImgs:any) {
-  project = specificProjectData.data.projects[0];
+interface ProjectsInterface {
+  // project: SpecificProjectInterface;
+  project: Array<projectInterface>;
+  // projectImgs: Array<Object>;
+}
+
+export default function WorksDetails({ project }: ProjectsInterface) {
   const router = useRouter();
-  const projectId = router.query.id;
-  const prevProjectId = Number(projectId) - 1;
-  const nextProjectId = Number(projectId) + 1;
+  const projectId = Number(router.query.id);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [currentProject, setCurrentProject] = useState<projectInterface>();
+  const [prevProjectId, setPrevProject] = useState<projectInterface>();
+  const [nextProjectId, setNextProject] = useState<projectInterface>();
+
   useEffect(() => {
-    // setIsLoading(true);
- 
+    project.forEach((project: projectInterface) => {
+      if (project.project_id === projectId) {
+        setCurrentProject(project);
+      } else if (project.project_id === projectId - 1) {
+        setPrevProject(project);
+      } else if (project.project_id === projectId + 1) {
+        setNextProject(project);
+      }
+    });
+    
     setIsLoading(false);
-  }, []);
 
-  // const projectId = router.query.id;
-
-  // const proj = indexProjectData[Number(projectId)];
+  }, [project, projectId]);
 
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (isLoading) return <p>Loading...</p>;
 
   return (
     <div className="worksDetailsMainDiv">
-      <div className="worksDetailsLeft">
-        <div className="worksDetailsTitle">
-          <div>{project.title}</div>
-        </div>
-        <div className="worksDetailsInfo">
-          <span>Client</span>
-          <span>{project.title}</span>
-        </div>
-        <div className="worksDetailsInfo">
-          <span>Year</span>
-          <span>{project.year}</span>
-        </div>
-        <div className="worksDetailsInfo">
-          <span>Location</span>
-          <span>{project.location}</span>
-        </div>
-        <div className="worksDetailsInfo">
-          <span>Services</span>
-          <span>{project.tags}</span>
-        </div>
-        <div className="worksDetailsText">
-          {project.info}
-        </div>
-      </div>
+      {currentProject != undefined && (
+        <>
+          <div className="worksDetailsLeft">
+            <div className="worksDetailsTitle">
+              <div>{currentProject.title}</div>
+            </div>
+            <div className="worksDetailsInfo">
+              <span>Client</span>
+              <span>{currentProject.title}</span>
+            </div>
+            <div className="worksDetailsInfo">
+              <span>Year</span>
+              <span>{currentProject.year}</span>
+            </div>
+            <div className="worksDetailsInfo">
+              <span>Location</span>
+              <span>{currentProject.location}</span>
+            </div>
+            <div className="worksDetailsInfo">
+              <span>Services</span>
+              <span>{currentProject.tags}</span>
+            </div>
+            <div className="worksDetailsText">{currentProject.info}</div>
+          </div>
+        </>
+      )}
       <div className="worksDetailsRight">
-        {/* <img src="https://via.placeholder.com/700x382" className="specificFigure-1 aspect16_9"/> */}
-        <img src={specificProjectData.data.projects[0].images[0].url} className="specificFigure aspect16_9"/>
-        {/* <img src="https://via.placeholder.com/690x378" className="specificFigure-2"/> */}
-        <img src={specificProjectData.data.projects[0].images[0].url} className="specificFigure aspect16_9"/>
-        {/* <img src="https://via.placeholder.com/692x367" className="specificFigure-3"/> */}
-        <img src={specificProjectData.data.projects[0].images[0].url} className="specificFigure aspect16_9"/>
-        {/* <img src={`http://localhost:1337${projects.data.attributes.media.data[0].attributes.url}`} /> */}
+        {currentProject?.images.map(
+          (projImg: { url: string }, index: number) => {
+            console.log("projImg :", projImg);
+            return (
+              <img
+                src={projImg.url}
+                className="specificFigure aspect16_9"
+                key={`specific-img-${index}`}
+                loading="lazy"
+              />
+            );
+          }
+        )}
         <div className="workDetailsRightButtons">
-          {prevProjectId >= 0 && <Link href={`/works/${prevProjectId}`}>&#10094; Prev</Link>}
-          <Link href={`/works/${nextProjectId}`}>Next &#10095;</Link>
+          {prevProjectId != undefined && prevProjectId?.project_id >= 0 && (
+            <Link href={`/works/${prevProjectId?.project_id}`}>
+              &#10094; Prev
+            </Link>
+          )}
+          {nextProjectId != undefined && nextProjectId?.project_id >= 0 && (
+            <Link href={`/works/${nextProjectId?.project_id}`}>
+              Next &#10095;
+            </Link>
+          )}
         </div>
         <div className="workDetailsNextPrevProject">
-          <span>Altava</span>
-          <span>Off the Grid</span>
+          {prevProjectId != undefined && <span>{prevProjectId.title}</span>}
+          {nextProjectId != undefined && <span>{nextProjectId.title}</span>}
         </div>
       </div>
     </div>

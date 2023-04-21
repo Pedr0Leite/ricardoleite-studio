@@ -242,8 +242,8 @@
 }
 
 .specificFigure {
-  /* width: 750px; */
-  width: 100%;
+  /* height: auto !important; */
+  width: 100% !important;
 }
 
 .figure p span:first-child {
@@ -442,8 +442,6 @@
   animation:c2 2s linear infinite;
 }
 @keyframes c2 {to{background-size: 100% 3px}}
-
-
 
 
 

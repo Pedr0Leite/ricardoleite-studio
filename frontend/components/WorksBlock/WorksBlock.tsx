@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import SlidingText from "../SlidingText";
 
 interface WorksBlockInterface {
   imgBlock1?: {
@@ -97,7 +96,7 @@ export default function WorksBlock({
     //   className="worksGrid"
     // >
     <div className="worksGrid">
-      <div className="worksRowBlock1">
+      {imgBlock1 && <div className="worksRowBlock1">
         <div className="worksBlock1">
           <Link href={`/works/${imgBlock1?.[0].clientId}`} className="figure">
             <p>
@@ -112,7 +111,6 @@ export default function WorksBlock({
         <div className="worksBlock2">
           <Link href={`/works/${imgBlock1?.[1].clientId}`} className="figure">
             <p>
-              {/* <img loading="lazy" src="https://via.placeholder.com/454x255" /> */}
               <img loading="lazy" src={imgBlock1?.[1].imgSrc2} className="figure-2 aspect16_9"/>
             </p>
             <p>
@@ -122,7 +120,6 @@ export default function WorksBlock({
           </Link>
           <Link href={`/works/${imgBlock1?.[2].clientId}`} className="figure">
             <p>
-              {/* <img loading="lazy" src="https://via.placeholder.com/414x414" /> */}
               <img loading="lazy" src={imgBlock1?.[2].imgSrc3} className="figure-3 aspect1_1"/>
             </p>
             <p>
@@ -131,11 +128,10 @@ export default function WorksBlock({
             </p>
           </Link>
         </div>
-      </div>
-      <div className="worksRowBlock2">
+      </div>}
+      {imgBlock2 && <div className="worksRowBlock2">
         <Link href={`/works/${imgBlock2?.[0].clientId}`} className="figure">
           <p>
-            {/* <img loading="lazy" src="https://via.placeholder.com/336x336" /> */}
             <img loading="lazy" src={imgBlock2?.[0].imgSrc4} className="figure-4 aspect1_1"/>
           </p>
           <p>
@@ -145,7 +141,6 @@ export default function WorksBlock({
         </Link>
         <Link href={`/works/${imgBlock2?.[1].clientId}`} className="figure">
           <p>
-            {/* <img loading="lazy" src="https://via.placeholder.com/394x220" /> */}
             <img loading="lazy" src={imgBlock2?.[1].imgSrc5} className="figure-5 aspect16_9"/>
           </p>
           <p>
@@ -155,7 +150,6 @@ export default function WorksBlock({
         </Link>
         <Link href={`/works/${imgBlock2?.[2].clientId}`} className="figure">
           <p>
-            {/* <img loading="lazy" src="https://via.placeholder.com/395x500" /> */}
             <img loading="lazy" src={imgBlock2?.[2].imgSrc6} className="figure-6 aspect4_5"/>
           </p>
           <p>
@@ -163,11 +157,10 @@ export default function WorksBlock({
             <span>{imgBlock2?.[2].tags}</span>
           </p>
         </Link>
-      </div>
-      <div className="worksRowBlock3">
+      </div>}
+      {imgBlock3 && <div className="worksRowBlock3">
         <Link href={`/works/${imgBlock3?.[0].clientId}`} className="figure">
           <p>
-            {/* <img loading="lazy" src="https://via.placeholder.com/1361x766" /> */}
             <img loading="lazy" src={imgBlock3?.[0].imgSrc7} className="figure-7 aspect16_9" />
           </p>
           <p>
@@ -175,7 +168,7 @@ export default function WorksBlock({
             <span>{imgBlock3?.[0].tags}</span>
           </p>
         </Link>
-      </div>
+      </div>}
       {/* </motion.div> */}
       {/* <SlidingText/> */}
     </div>
