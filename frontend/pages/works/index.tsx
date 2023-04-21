@@ -8,7 +8,7 @@ import SlidingText from "@/components/SlidingText";
 
 const workBlocksQuery = `
 query WorkBlocks {
-  workBlockEntries {
+  workBlockEntries (first: 20) {
     id
     blockNumber
     img {
@@ -68,13 +68,13 @@ export default function Works({ projects }: ProjectsInterface) {
 
   const sectionOne = projectsBlocks.filter(
     (section: any) => section.sectionNumber == 1
-  );
+    );
   const sectionTwo = projectsBlocks.filter(
     (section: any) => section.sectionNumber == 2
-  );
+    );
   const sectionThree = projectsBlocks.filter(
     (section: any) => section.sectionNumber == 3
-  );
+    );
 
   const sectionOneRowOne = sectionOne.filter(
     (block: any) => block.blockNumber == "block1"
@@ -104,10 +104,10 @@ export default function Works({ projects }: ProjectsInterface) {
     (block: any) => block.blockNumber == "block1"
   );
   const sectionThreeRowTwo = sectionThree.filter(
-    (block: any) => block.blockNumber == "block1"
-  );
+    (block: any) => block.blockNumber == "block2"
+    );
   const sectionThreeRowThree = sectionThree.filter(
-    (block: any) => block.blockNumber == "block1"
+    (block: any) => block.blockNumber == "block3"
   );
   // }
 
@@ -227,30 +227,30 @@ export default function Works({ projects }: ProjectsInterface) {
                 clientName: sectionThreeRowOne[2].project?.title,
               },
             }}
-            imgBlock2={{
-              0: {
-                imgSrc4: sectionThreeRowTwo[0].img.url,
-                clientId: sectionThreeRowTwo[0].project.project_id,
-                clientName: sectionThreeRowTwo[0].project?.title,
-              },
-              1: {
-                imgSrc5: sectionThreeRowTwo[1].img.url,
-                clientId: sectionThreeRowTwo[1].project.project_id,
-                clientName: sectionThreeRowTwo[1].project?.title,
-              },
-              2: {
-                imgSrc6: sectionThreeRowTwo[2].img.url,
-                clientId: sectionThreeRowTwo[2].project.project_id,
-                clientName: sectionThreeRowTwo[2].project?.title,
-              },
-            }}
-            imgBlock3={{
-              0: {
-                imgSrc7: sectionOneRowThree[0].img.url,
-                clientId: sectionOneRowThree[0].project.project_id,
-                clientName: sectionOneRowThree[0].project?.title,
-              },
-            }}
+            // imgBlock2={{
+            //   0: {
+            //     imgSrc4: sectionThreeRowTwo[0].img.url,
+            //     clientId: sectionThreeRowTwo[0].project.project_id,
+            //     clientName: sectionThreeRowTwo[0].project?.title,
+            //   },
+            //   1: {
+            //     imgSrc5: sectionThreeRowTwo[1].img.url,
+            //     clientId: sectionThreeRowTwo[1].project.project_id,
+            //     clientName: sectionThreeRowTwo[1].project?.title,
+            //   },
+            //   2: {
+            //     imgSrc6: sectionThreeRowTwo[2].img.url,
+            //     clientId: sectionThreeRowTwo[2].project.project_id,
+            //     clientName: sectionThreeRowTwo[2].project?.title,
+            //   },
+            // }}
+            // imgBlock3={{
+            //   0: {
+            //     imgSrc7: sectionThreeRowThree[0].img.url,
+            //     clientId: sectionThreeRowThree[0].project.project_id,
+            //     clientName: sectionThreeRowThree[0].project?.title,
+            //   },
+            // }}
           />
         )}
         <SlidingText />
