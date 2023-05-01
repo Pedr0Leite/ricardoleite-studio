@@ -304,7 +304,7 @@ body {
   font-family: SuisseIntl-Regular;
   font-style: normal;
   font-weight: bold;
-  font-size: 26px;
+  font-size: calc(8px + 1vw);
   line-height: 100%;
   color: #000000;
 }
@@ -313,22 +313,23 @@ body {
   font-family: SuisseIntl-Regular;
   font-style: normal;
   font-weight: 400;
-  font-size: 22px;
+  font-size: calc(7px + 1vw);
   line-height: 100%;
   color: #000000;
 }
 
 .worksDetailsText {
-  height: 425px;
+  height: 405px;
   font-family: SuisseIntl-Regular;
   font-style: normal;
   font-weight: 400;
-  font-size: 26px;
+  font-size: calc(9px + 1vw);
   line-height: 100%;
   color: #000000;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding-top: 32.5px;
+  margin-top: 20px;
 }
 
 .worksDetailsRight {
@@ -392,7 +393,8 @@ body {
   text-decoration-line: underline;
   color: #000000;
   position: relative;
-  left: 120px;
+  /* left: 120px; */
+  left: 8vw;
 }
 
 /* Sliding text */
@@ -463,12 +465,20 @@ body {
 
 @media only screen and (max-width: 840px) {
   .marquee{
-    /* left: 10px; */
     width: 105vw;
     max-width: 105vw;
   }
+
+  .worksDetailsTitle{
+    font-size: 55px;
+  }
+
+  .worksDetailsText{
+    /* font-size: 13px; */
+    height: 328px;
+  }
 }
 
-/* @media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   
-} */
+}
