@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Navbar.module.css";
 import useScrollDirection from "@/hooks/useScrollDirection";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import rlLogo from "../public/RL_Logotype.png";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Squeeze as Hamburger } from "hamburger-react";
+import NavbarMobile from "./NavbarMobile";
 
-const Clock = dynamic(() => import("./Clock"), { ssr: false });
+const Clock = dynamic(() => import("../Clock"), { ssr: false });
 
 export default function Navbar() {
   const scrollDirection = useScrollDirection();
@@ -17,10 +19,11 @@ export default function Navbar() {
         scrollDirection === "down" ? styles.down : ""
       }`}
     >
+      <NavbarMobile />
       <div className={styles.navLeftBlock}>
-          <Link href="/studio">
-            <span className={styles.rl_logo}></span>
-          </Link>
+        <Link href="/studio">
+          <span className={styles.rl_logo}></span>
+        </Link>
         <Link href="/projectIndex">
           <span>Index</span>
         </Link>

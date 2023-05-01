@@ -40,7 +40,7 @@ interface projectInterface {
 
 const projectsQuery = `
 query Projects {
-  projects {
+  projects (first: 20) {
     project_id
     title
     tags
@@ -100,7 +100,7 @@ export const getStaticProps = async (context: any) => {
   const data: SpecificProjectInterface = await hygraph.request(
     `
     query SpecificID {
-      projects {
+      projects (first: 20) {
         project_id
         title
         tags
