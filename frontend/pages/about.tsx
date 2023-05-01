@@ -52,7 +52,9 @@ export default function About() {
             </div>
             <div>
               <p>Let’s work on something together →</p>
-              <p>info@ricardoleite.net</p>
+              <p>
+                <u>info@ricardoleite.net</u>
+              </p>
             </div>
           </div>
           <div className={styles.firstBlockRight}>
@@ -130,30 +132,40 @@ export default function About() {
         <div className={styles.thirdBlock}>
           <div className={styles.thirdBlockTitle}>Books</div>
           <div className={styles.thirdBlockText}>
-            <p>
-              Less is More by Victionary, 2018 Type Plus by Unit editions, 2015
-              CITIx60 Amsterdam by Victionary, 2015 Portugal by Design, 2015RSVP
-              - Invitation Design for Special Occasions, 2015 Its Nice That
-              Annual Review, 2013 Poster Graphics, JP, 2013Pretty Ugly,
-              Gestalten, 2012 BASIC COVER, Index Books, 2013Posters, Index
-              Books, 2013 FRESH - Cutting Edge Illustrations, Slanted 2012
-            </p>
+            <ul>
+              <li>Less is More by Victionary, 2018</li>
+              <li>Type Plus by Unit editions, 2015</li>
+              <li>CITIx60 Amsterdam by Victionary, 2015</li>
+              <li>Portugal by Design, 2015</li>
+              <li>RSVP - Invitation Design for Special Occasions, 2015</li>
+              <li>Its Nice That Annual Review, 2013</li>
+              <li>Poster Graphics, JP, 2013</li>
+              <li>Pretty Ugly, Gestalten, 2012</li>
+              <li>BASIC COVER, Index Books, 2013</li>
+              <li>Posters, Index Books, 2013</li>
+              <li>FRESH - Cutting Edge Illustrations, Slanted 2012</li>
+            </ul>
           </div>
           <div className={styles.thirdBlockTitle}>Magazines</div>
           <div className={styles.thirdBlockText}>
-            <p>
-              Kinfolk v38 / Rituals, Winter 2020 IdN v22n3: Designer Typefaces,
-              2015IdN v20n4: Paper Special, 2014Soirée graphique n°6, 2013IdN
-              v19n4: Shapes-in-Pattern, 2013Creative Review, June, 2012IDN v19/
-              Shaping their own patterns, 2012C.R. , Monograph Barcelona,
-              2012Étapes, France, 2013
-            </p>
+            <ul>
+              <li>Kinfolk v38 / Rituals, Winter, 2020</li>
+              <li>IdN v22n3: Designer Typefaces, 2015</li>
+              <li>IdN v20n4: Paper Special, 2014</li>
+              <li>Soirée graphique n°6, 2013</li>
+              <li>IdN v19n4: Shapes-in-Pattern, 2013</li>
+              <li>Étapes, France, 2013</li>
+              <li>Creative Review, June, 2012</li>
+              <li>IDN v19/ Shaping their own patterns, 2012</li>
+              <li>C.R. , Monograph Barcelona, 2012</li>
+            </ul>
           </div>
-          <div className={styles.thirdBlockTitle}></div>
+          <div className={styles.thirdBlockTitle}>Prizes</div>
           <div className={styles.thirdBlockText}>
-            <p>
-              ByeByeHome Odyssey / Illustration Represented by <u>BRUT Spain</u>
-            </p>
+            <ul>
+              <li>Clio Awards / C.F, 2023</li>
+              <li>ADCN / 2x Silver Lamp / C.F., 2022</li>
+            </ul>
           </div>
         </div>
         <div className={styles.thirdBlock}>
@@ -169,11 +181,15 @@ export default function About() {
           </div>
           <div className={styles.thirdBlockTitle}></div>
           <div className={styles.thirdBlockText}>
-            <p>Type by <u>ABC Dinamo</u></p>
-            <p>Site by <u>Pedro Leite</u></p>
+            <p>
+              Type by <u>ABC Dinamo</u>
+            </p>
+            <p>
+              Site by <u>Pedro Leite</u>
+            </p>
           </div>
         </div>
-        <SlidingText/>
+        <SlidingText />
       </div>
     </>
   );

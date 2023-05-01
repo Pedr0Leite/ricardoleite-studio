@@ -1,5 +1,7 @@
 .mainDiv {
   width: 100%;
+  /* background: linear-gradient(0deg, rgba(255,255,255,1) 90%, rgba(252,33,33,1) 100%); */
+  background: linear-gradient(0deg, rgba(255,255,255,1) 74%, rgba(253,107,107,1) 85%, rgba(252,33,33,1) 95%, rgba(255,255,255,1) 100%);
 }
 
 /* New */
@@ -32,6 +34,7 @@
   font-size: 18px;
   line-height: 100%;
   color: #000000;
+  padding-top: 20px;
 }
 
 .firstBlockLeft div:nth-child(2) {
@@ -159,6 +162,12 @@
   row-gap: 40px;
   margin: 0 15px 0 15px;
 }
+
+.thirdBlock~.thirdBlock~.thirdBlock {
+  height: 250px;
+  border-bottom: 0;
+}
+
 
 .thirdBlockTitle {
   display: flex;

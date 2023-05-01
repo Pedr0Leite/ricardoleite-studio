@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "./../../styles/Colors";
 
 interface imgInterface {
   url: string;
@@ -12,6 +13,10 @@ export const ProjectIndexBlockDiv = styled.div`
   border-top: 1px solid black;
   padding: 10px;
   cursor: pointer;
+
+  &:hover{
+    background-color: ${colors.globalRed};
+  }
 `;
 
 export const ProjectIndexBlockOneDiv = styled.div`

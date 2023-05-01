@@ -34,6 +34,10 @@ export const Title = styled.div<colorInterface>`
         margin: 0;
         color: black;
     }
+
+    @media only screen and (max-width: 850px) {
+        font-size: 160px;
+      }
 `;
 
 export const TopDiv = styled.div<colorInterface>`
