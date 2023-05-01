@@ -135,6 +135,19 @@ export default function WorksDetails({ project }: ProjectsInterface) {
   const [prevProjectId, setPrevProject] = useState<projectInterface>();
   const [nextProjectId, setNextProject] = useState<projectInterface>();
 
+  let tags;
+
+  if(currentProject && currentProject.tags){
+    tags = currentProject.tags.map((tag: string, index: number) => {
+        if (currentProject.tags.length - 1 == index) {
+          return tag.replace("_", " ");
+        } else {
+          return tag.replace("_", " ") + ", ";
+        }
+      })
+    }
+
+
   useEffect(() => {
     project.forEach((project: projectInterface) => {
       if (project.project_id === projectId) {
@@ -178,7 +191,7 @@ export default function WorksDetails({ project }: ProjectsInterface) {
             </div>
             <div className="worksDetailsInfo">
               <span>Services</span>
-              <span>{currentProject.tags}</span>
+              <span>{tags}</span>
             </div>
             <div className="worksDetailsText">{currentProject.info}</div>
           </div>
@@ -187,7 +200,6 @@ export default function WorksDetails({ project }: ProjectsInterface) {
       <div className="worksDetailsRight">
         {currentProject?.images.map(
           (projImg: { url: string }, index: number) => {
-            console.log("projImg :", projImg);
             return (
               <img
                 src={projImg.url}

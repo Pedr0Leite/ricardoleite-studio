@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Squeeze as Hamburger } from "hamburger-react";
 import NavbarMobile from "./NavbarMobile";
 
-const Clock = dynamic(() => import("../Clock"), { ssr: false });
+const Clock = dynamic(() => import("../Clock/Clock"), { ssr: false });
 
 export default function Navbar() {
   const scrollDirection = useScrollDirection();
@@ -21,16 +21,18 @@ export default function Navbar() {
     >
       <NavbarMobile />
       <div className={styles.navLeftBlock}>
-        <Link href="/studio">
-          <span className={styles.rl_logo}></span>
+        <Link href="/about">
+        {/* <Link href="/studio"> */}
+          {/* <span className={styles.rl_logo}></span> */}
+          <span>Info</span>
         </Link>
-        <Link href="/projectIndex">
-          <span>Index</span>
+        <Link href="/works">
+          <span>Works</span>
         </Link>
       </div>
       <div className={styles.navRightBlock}>
-        <Link href="/works">
-          <span>Works</span>
+        <Link href="/projectIndex">
+          <span>Index</span>
         </Link>
         <Clock />
         <Link href="/about">
