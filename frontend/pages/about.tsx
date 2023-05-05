@@ -43,6 +43,7 @@ export default function About() {
         <div className={styles.firstBlock}>
           <div className={styles.firstBlockLeft}>
             <div>I am Ricardo Leite</div>
+            <div className={styles.mainAbstrcImgForMobile}></div>
             <div>
               <p>
                 Amsterdam-based creative designer and art director, with a

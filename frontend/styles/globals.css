@@ -474,11 +474,17 @@ body {
   }
 
   .worksDetailsText{
-    /* font-size: 13px; */
     height: 328px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  
+  .worksDetailsText{
+    height: 310px;
+  }
+
+  .marquee{
+    width: 100vw;
+    max-width: none;
+  }
 }
